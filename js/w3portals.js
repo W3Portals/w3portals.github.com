@@ -59,7 +59,8 @@ var HeaderSelect = function (clicked) {
     contentitems.hide();
     contactusinfo.hide();
     ourworkinfo.hide();
-    $('div#sidecontent').animate({ width: '200px' });
+  //  $('div#sidecontent').animate({ width: '200px' });
+	 $('div#sidecontent').hide();
 };
 
 var bgimg;
@@ -91,6 +92,14 @@ var SetBackgroundImage = function () {
 
 var SetContentHeight = function () {
     var targetHeight = $(window).height() - 200;
-    $("#About-info .form-content").css('max-height', targetHeight);
+	var targetwidth = $(window).width();
+	if(targetwidth<400)
+	  {
+	    $("#imglogo").css('height', 45);
+	  }
+	  else {
+	    $("#imglogo").css('height', '');
+	  }
+  //  $("#About-info .form-content").css('max-height', targetHeight);
     $("#ourwork-section .form-content").css('max-height', targetHeight);
 };
