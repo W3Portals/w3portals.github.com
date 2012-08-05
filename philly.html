@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>
+People
+»
+WeWorkInPhilly: A community-edited guide to the AWESOME CREATIVE, TECHNOLOGY, AND BUSINESS COMMUNITY of Philadelphia, PA
+</title>
+<meta name="viewport" content="width=device-width, user-scalable=no">
+<meta name="google-site-verification" content="FjOa1nG7s3qeFYrutJ7r1aphcN8OwlOhOz1ftdiXUuc">
+<meta name="description" content="WeWorkInPhilly is a 100% community-edited guide to the creative, technology, and business community in Philadelphia. ">
+<link type="application/opensearchdescription+xml" title="WeWorkInPhilly" rel="search" href="http://weworkinphilly.com/opensearch.xml">
+<link type="text/css" rel="stylesheet" media="all" href="http://weworkinphilly.com/stylesheets/basic_mobile.css">
+<link type="text/css" rel="stylesheet" media="only screen and (max-device-width: 960px)" href="http://weworkinphilly.com/stylesheets/advanced_mobile.css">
+<link type="text/css" rel="stylesheet" media="all and (min-device-width: 961px)" href="http://weworkinphilly.com/stylesheets/desktop.css">
+<!--[if lt IE 9]>
+<link href="http://weworkinphilly.com/stylesheets/desktop.css" media="all" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+<meta content="authenticity_token" name="csrf-param">
+<meta content="se9sWl2n4665bo5qdghEAe7t/ChXnR7KtMJDUnh+LzM=" name="csrf-token">
+
+<style media="screen" type="text/css">
+	#header #main_nav {
+    border: 0 none;
+    display: block;
+    float: right;
+    margin: 0;
+    outline: 0 none;
+    overflow: hidden;
+    padding: 0;
+    width: 400px;
+    z-index: 80;
+}
+
+		   #images { 
+		  	padding:0; margin:0; 
+		
+		  	/*overflow: hidden;width: 240px; height: 185px; */
+		  	} 
+           #images img { border: solid 3px #CCC; height: 180px; border-radius: 5px; }
+        
+           #more { color:#333333; font-size: x-large; font-family: Verdana; text-decoration: none; }
+           #loading {color:#AAA; width: 100%;height: 80px;background-color: #000;position: absolute;
+			 	margin-top: 0px; text-align: center; }
+           
+		 </style>
+	</head>
+ <body >
+ 	<div id="header">
+<div class="inner_container">
+<h1>
+<a href="/">
+<span>we</span>WorkInPhilly
+<img class="home_marker" height="12" src="http://weworkinphilly.com/images/home_12x12.png" width="12">
+</a>
+</h1>
+<div id="account_box">
+<div id="global_sign_in">
+<a href="http://weworkinphilly.com/sign_in" id="sign_in_link">Sign In / Join</a>
+</div>
+</div>
+<ul id="main_nav">
+<li><a href="http://weworkinphilly.com/people" class="people">People</a></li>
+<li><a href="http://weworkinphilly.com/companies" class="companies">Companies</a></li>
+<li><a href="http://weworkinphilly.com/groups" class="groups">Groups</a></li>
+
+</ul>
+<form action="http://weworkinphilly.com/search" id="global_search" method="get">
+<input autosave="citizenry_global_search" name="q" placeholder="Search…" results="10" type="search">
+</form>
+</div>
+<div id="global_sign_in_form">
+<div class="sign_in_form">
+<form accept-charset="UTF-8" action="http://weworkinphilly.com/user_sessions" class="formtastic sign_in_data" id="new_sign_in_data" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="?"><input name="authenticity_token" type="hidden" value="WovPLy8+Zl7wyt1KugRKdv60xkFrQ0nlQifMiOCtXCQ="></div>
+<li class="string required" id="sign_in_data_email_input"><label for="sign_in_data_email">Twitter or LinkedIn User Name<abbr title="required">*</abbr></label><input autocapitalize="off" autocorrect="off" id="sign_in_data_email" name="sign_in_data[email]" type="text"></li>
+<li class="select required" id="sign_in_data_provider_input"><label for="sign_in_data_provider">Provider<abbr title="required">*</abbr></label><select id="sign_in_data_provider" name="sign_in_data[provider]"><option value="auto">Choose automatically</option>
+<option value="twitter">Twitter</option>
+<option value="linked_in">LinkedIn</option></select></li>
+<li class="commit"><input class="submit" id="sign_in_data_submit" name="commit" type="submit" value="Sign in!"></li>
+</form>
+</div>
+
+</div>
+</div>
+<div id="images">
+	
+</div>  
+ <a id="more" onclick="loadimgs();" href="#more">
+ 	<span id="loading">Loading...</span>
+<div class="menu">
+   Show me MORE
+</div>
+</a>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+<script type="text/javascript">
+   (function () {
+   	loadimgs();
+   	
+   	$(window).scroll(function(){
+    if ($(window).scrollTop() == $(document).height() - $(window).height()){
+     	loadimgs();
+      }
+     }); 
+   	
+ })();
+
+ function loadimgs() {
+ 		$('#loading').show();
+	$.getJSON("http://weworkinphilly.com/people.json?callback=?", function(data){
+     $.each(data, function(){
+     	 
+     	   $("<img/>").attr("src", this.person.image)
+     	   .attr("title", this.person.name).attr("id","img"+this.person.user_id).appendTo("#images")
+           .wrap('<a href="http://weworkinphilly.com/people/'+this.person.user_id+'" target="_blank" />');
+          });
+        //  $('#images').cycle({fx:'fade', speed:'fast', timeout: 0, next:'#next', prev:'#prev'});
+     }).complete(function() { $('#loading').hide(); });;
+    }
+</script>
+ <script type="text/javascript">
+       var _gaq = _gaq || [];
+       _gaq.push(['_setAccount', 'UA-372716-1']);
+       _gaq.push(['_trackPageview']);
+
+       (function () {
+           var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+           ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+
+</script>
+
+</body>
+</html>

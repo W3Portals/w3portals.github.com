@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		 <style type="text/css" media="screen">
+		   #images { 
+		  	padding:0; margin:0; 
+		  	background:#000000;
+		  	/*overflow: hidden;width: 240px; height: 185px; */
+		  	} 
+           #images img { border: solid 3px #CCC; height: 180px; border-radius: 5px; }
+           .menu { font-size:large; background: #CCC; border:solid 2px #EEE; width: 100%; text-align: center; color:#333; height: 60px; }
+           #more { color:#333333; font-size: x-large; font-family: Verdana; text-decoration: none; }
+           #loading {color:#AAA; width: 100%;height: 80px;background-color: #000;position: absolute;
+			 	margin-top: 0px; text-align: center; }
+           
+		 </style>
+	</head>
+ <body style="background:#000">
+ 	<div class="menu">
+  
+    <span style="font-size:small;">We the People of <br></span>  <span style="color:#844">we</span>WorkInPhilly
+   
+ 	</div>
+<div id="images">
+	
+</div>  
+ <a id="more" onclick="loadimgs();" href="#more">
+ 	<span id="loading">Loading...</span>
+<div class="menu">
+   Show me MORE
+</div>
+</a>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+<script type="text/javascript">
+   (function () {
+   	loadimgs();
+   	
+   	$(window).scroll(function(){
+    if ($(window).scrollTop() == $(document).height() - $(window).height()){
+     	loadimgs();
+      }
+     }); 
+   	
+ })();
+
+ function loadimgs() {
+ 		$('#loading').show();
+	$.getJSON("http://weworkinphilly.com/people.json?callback=?", function(data){
+     $.each(data, function(){
+     	 
+     	   $("<img/>").attr("src", this.person.image)
+     	   .attr("title", this.person.name).attr("id","img"+this.person.user_id).appendTo("#images")
+           .wrap('<a href="http://weworkinphilly.com/people/'+this.person.user_id+'" target="_blank" />');
+          });
+        //  $('#images').cycle({fx:'fade', speed:'fast', timeout: 0, next:'#next', prev:'#prev'});
+     }).complete(function() { $('#loading').hide(); });;
+    }
+</script>
+ <script type="text/javascript">
+       var _gaq = _gaq || [];
+       _gaq.push(['_setAccount', 'UA-372716-1']);
+       _gaq.push(['_trackPageview']);
+
+       (function () {
+           var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+           ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+           var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
+
+</script>
+
+</body>
+</html>

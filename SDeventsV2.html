@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>StartupDigest Google Calendar formatter</title>
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script>
+    <script type="text/javascript">
+      google.load("gdata", "1.x", { packages : ["calendar"] });
+    </script>    
+    <script type="text/javascript">
+      function _run() {      
+               
+        var content = document.getElementById('content');      
+        var calendarService = new google.gdata.calendar.CalendarService('GoogleInc-jsguide-1.0');
+
+        // The "public/full" feed is used to retrieve events from the named public calendar with full projection.
+        var feedUri = 'http://www.google.com/calendar/feeds/3vsgtjmtismbmoto5i0buq0b00%40group.calendar.google.com/public/full';
+	var feedinput = null;
+       
+        feedinput = document.getElementById('feedurl').value;	
+//	submitButton = document.getElementById('submitButton').value;  
+       
+       if(feedinput.length > 5)
+	{
+	 feedUri = feedinput;
+	}
+
+      if(feedUri.indexOf("public/full") == -1)
+	{
+	 feedUri = 'http://www.google.com/calendar/feeds/en.usa%23holiday%40group.v.calendar.google.com/public/full';
+	}
+
+        var query = new google.gdata.calendar.CalendarEventQuery(feedUri);
+  	query.setOrderBy('starttime');
+  	query.setSortOrder('ascending');
+  	query.setFutureEvents(true);
+ 	query.setSingleEvents(true);
+  	query.setMaxResults(20);
+                        
+       var callback = function(result) 
+       {
+        
+        // var entries = result.feed.entry;
+           var entries = result.feed.getEntries();
+        
+          var html = entries.length + ' upcoming events';
+        
+          html += '<br>';
+          for (var i = 0; i < entries.length; i++ ) 
+	  {
+		var eventEntry = entries[i];
+		var eventTitle = eventEntry.getTitle().getText();          
+		var startDateTime = null;
+	        var eventDate = null;
+                var eventWhere = null;
+		var eventContent=eventEntry.getContent().getText();
+
+             var times = eventEntry.getTimes();            
+             if (times.length > 0) 
+             {
+	       startDateTime = times[0].getStartTime();
+               eventDate = startDateTime.getDate();
+             }
+
+		var d_names = new Array("Sun", "Mon", "Tues","Wed", "Thurs", "Fri", "Sat");
+
+		var m_names = new Array("Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec");
+		
+		var a_p = "";
+		var d = eventDate;
+		var curr_hour = d.getHours();
+		if (curr_hour < 12)
+   		{
+   		 a_p = "am";
+   		}
+		else
+   		{
+   		 a_p = "pm";
+   		}
+		if (curr_hour == 0)
+   		{
+   		 curr_hour = 12;
+   		}
+		if (curr_hour > 12)
+   		{
+   		 curr_hour = curr_hour - 12;
+   		}
+
+		var curr_min = d.getMinutes();
+		curr_min = curr_min + "";
+
+		if (curr_min.length == 1)
+   		{
+   		 curr_min = "0" + curr_min;
+   		}
+
+		var time=curr_hour + ':' + curr_min + a_p;
+		var day=eventDate.getDay();
+		var month=eventDate.getMonth();
+		var date = eventDate.getDate();		
+
+		var dayname = d_names[day];
+		var monthname = m_names[month];
+
+            var location = eventEntry.getLocations(); 
+            var eventWhere = location[0].getValueString();            
+
+            html += '<br><br><strong>'+ eventTitle  +'</strong> <br> When: '+dayname +' '+monthname+' '+date+', '+time+'<br>Where: '+ eventWhere +'<br>'+ eventContent ;
+          }
+
+          html += '<br><br>'+ feedUri ;        
+          content.innerHTML = html;
+        };
+        
+        // Error handler to be invoked when getEventsFeed() produces an error
+        var handleError = function(error) 
+        {
+          content.innerHTML = '<pre>' + error + '</pre>';
+        };
+        
+        // Submit the request using the calendar service object
+        calendarService.getEventsFeed(query, callback, handleError);
+      }
+      google.setOnLoadCallback(_run);
+    </script>
+
+  </head>
+  <body style="font-family: Arial;border: 0 none;">
+   <div style="font-size:small;background-color:Silver;padding:2px; border: 1px solid #bbb;">Instructions: This form will accept a FULL public XML feed of your Google calendar and format into the StartupDigest email template. Make sure calendar settings are set to "public" and "See all event details". Also, the feed url must end with /public/full</div> 
+   Google Calendar URL: <input type="text" id="feedurl" /> <input id="submitButton" type="submit" value="Submit" onClick="_run()" /> (ie. <b>http://www.google.com/calendar/feeds/</b>3vsgtjmtismbmoto5i0buq0b00%40group.calendar.google.com<b>/public/full</b>)<br>
+
+    <div id="content" style="width:100%;height:380px">Loading...</div>
+  </body>
+</html>

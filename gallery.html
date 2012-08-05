@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		 <style type="text/css" media="screen">
+		   #images { 
+		  	padding:0; margin:0; 
+		  	/*overflow: hidden;width: 240px; height: 185px; */
+		  	} 
+           #images img { border:none; height: 190px;}
+		 </style>
+	</head>
+<div id="images">
+	
+</div>  
+<div class="flickrNav">
+    <a id="prev" href="#">Prev</a><a id="next" href="#">Next</a>
+</div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+<script type="text/javascript">
+	$.getJSON("http://weworkinphilly.com/people.json?callback=?", function(data){
+     $.each(data, function(){
+           $("<img/>").attr("src", this.person.image).appendTo("#images");
+          });
+//  $('#images').cycle({fx:'fade', speed:'fast', timeout: 0, next:'#next', prev:'#prev'});
+});
+</script>
+</html>

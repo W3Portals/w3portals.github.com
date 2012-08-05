@@ -1,0 +1,112 @@
+<html>
+<head>
+<link rel="stylesheet" media="screen" type="text/css" href="LogoType/colorpicker/css/colorpicker.css" />
+
+<style> 
+ #logos { font-size: 48px; text-shadow: 3px 3px 3px #aaa;}
+ #yourlogo { margin:5px; text-align:center; height: 90px; }
+  .word1 { color: #008000;  }
+  .word2 { color: #696969; }
+ .fontfam { font-size:32px; border: 1px solid #ccc; border-radius:4px; margin:2px; padding:1px; display:inline}
+</style>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+<body>
+
+<div id="logos">
+<div id="yourlogo"> 
+      <span  class="word1">Funding</span><span class="word2">Works</span> 
+</div>
+  </div> 
+  <div>1. Enter your Logo text & color</div>
+<input id="word1" type="text" value="Funding" /> <input type="text" maxlength="6" size="6" id="colorpickerField1" value="008000"><br />
+<input id="word2" type="text" value="Works" /> <input type="text" maxlength="6" size="6" id="colorpickerField2" value="696969">
+   <div id="loading">Loading fonts...</div>
+  <ul id="fonts" style="list-style:none; display:inline;">   
+  </ul>
+  
+</body>
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="LogoType/colorpicker/js/colorpicker.js"></script>
+<script type="text/javascript">
+
+	WebFontConfig = { google: { families: [
+         'Droid Sans','Open Sans','Oswald','Droid Serif','PT Sans','Lobster','Yanone Kaffeesatz'
+		 ,'Arvo','Ubuntu','The Girl Next Door','Lato','PT Sans Narrow','Cabin','Calligraffitti','Dancing Script','Josefin Sans','Shadows Into Light','Nobile','Reenie Beanie','Tangerine','Rock Salt','Josefin Slab','Coming Soon','Crafty Girls','Cherry Cream Soda','Molengo','Cuprum','Raleway','Chewy','Arimo','Cantarell','Pacifico','Luckiest Guy','Podkova','Anton','Vollkorn','Copse','Walter Turncoat','Homemade Apple','Play','Crimson Text','Kreon','PT Serif','Varela Round','News Cycle','Permanent Marker','Slackey','Syncopate','Open Sans Condensed','Righteous','Unlock','Lemon','Aladin','Sniglet','Montez'
+] }  };
+	
+   (function () {
+   	loadFonts();
+	
+$('#colorpickerField1').ColorPicker({
+	onSubmit: function(hsb, hex, rgb, el) {
+		$(el).val(hex);
+		$(el).ColorPickerHide();	},
+	onBeforeShow: function () {$(this).ColorPickerSetColor(this.value);},
+	onChange: function (hsb, hex, rgb) {	$('#colorpickerField1').val(hex);	}
+})
+.bind('keyup', function(){ $(this).ColorPickerSetColor(this.value);
+});
+
+$('#colorpickerField2').ColorPicker({
+	onSubmit: function(hsb, hex, rgb, el) {
+		$(el).val(hex);
+		$(el).ColorPickerHide();	},
+	onBeforeShow: function () {$(this).ColorPickerSetColor(this.value);},
+	onChange: function (hsb, hex, rgb) {	$('#colorpickerField2').val(hex);	}
+})
+.bind('keyup', function(){ $(this).ColorPickerSetColor(this.value);
+});
+
+		
+ })();
+
+ function loadFonts() {
+ 
+ 		$('#loading').show();
+	$.getJSON("https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyBJxinfMqFhdPjHPR5dSefcitYycTN526g&sort=alpha&callback=?", function(data){
+         var cnt=0;
+	 $.each(data.items, function(){
+	          cnt++;
+	    if(WebFontConfig.google.families.indexOf(this.family)>0) {
+     	      //  WebFontConfig.google.families.push(this.family);
+		    
+     	   $("<li/>").html(this.family)
+		   .attr("class", "fontfam")
+     	   .css("font-family", this.family ).appendTo("#fonts");
+		     }
+          });
+      
+         }).complete(function() { 
+			 GetWebFonts();
+			
+			 $('#fonts li').click(function () { 
+		       $('#yourlogo').css("font-family", $(this).css("font-family"));
+			     $('#fonts li').css("background-color","#fff").css("border","1px solid #ccc");
+			     $(this).css("background-color","#eee").css("border","1px solid #000");
+				 $('span.word1').html($('#word1').val()).css("color", $('#colorpickerField1').val());
+				 $('span.word2').html($('#word2').val()).css("color", $('#colorpickerField2').val());		 
+				// console.log($('#colorpickerField2').val());
+			  
+	            });	
+           $('#loading').html("2. Select a Font"); 				
+	});
+	 
+    }
+	
+	function GetWebFonts(){
+	   //console.log("vvvvv...");
+	    var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+		
+	}
+</script>
+
+<html>
