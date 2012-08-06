@@ -45,7 +45,7 @@ a#logo { display: block;    float: left;  margin: 15px 5px;}
 #nav ul li a:hover { color: #660000;}
 #nav ul li.selected { background-color: #e7e7e7; text-shadow: none; border-radius:6px; -moz-border-radius: 6px; -webkit-border-radius: 6px;}
 #nav ul li.selected a {color: #000;}
-#aboutlist > ul li { margin:17px;}
+#aboutlist > li { margin:5px;}
 #content { top: 126px; clear: both;}
 div#sidecontent
 {
