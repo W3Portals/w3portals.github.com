@@ -17,7 +17,7 @@ $(document).ready(function () {
         else {
             for (i in markersArray) {
                 if (markersArray[i].title == this.value) {
-                     markersArray[i].animation = google.maps.Animation.DROP;
+                    markersArray[i].animation = google.maps.Animation.DROP;
                     markersArray[i].setMap(gMap);
                 }
             }
@@ -26,64 +26,17 @@ $(document).ready(function () {
 
 });
 
-
 function initialize() {
 
     var mapStyles = [
-         {
-             featureType: "road",
-             elementType: "geometry",
-             stylers: [
-              { hue: "#8800ff" },
-              { lightness: 100 }
-            ]
-         }, {
-             featureType: "road",
-             stylers: [
-              { visibility: "on" },
-              { hue: "#91ff00" },
-              { saturation: -62 },
-              { gamma: 1.98 },
-              { lightness: 45 }
-            ]
-         }, {
-             featureType: "water",
-             stylers: [
-              { hue: "#005eff" },
-              { gamma: 0.72 },
-              { lightness: 42 }
-            ]
-         }, {
-             featureType: "transit.line",
-             stylers: [
-              { visibility: "on" }
-            ]
-         }, {
-             featureType: "administrative.locality",
-             stylers: [
-              { visibility: "on" }
-            ]
-         }, {
-             featureType: "administrative.neighborhood",
-             elementType: "geometry",
-             stylers: [
-              { visibility: "simplified" }
-            ]
-         }, {
-             featureType: "landscape",
-             stylers: [
-              { visibility: "on" },
-              { gamma: 0.41 },
-              { lightness: 46 }
-            ]
-         }, {
-             featureType: "administrative.neighborhood",
-             elementType: "labels.text",
-             stylers: [
-              { visibility: "on" },
-              { saturation: 33 },
-              { lightness: 20 }
-            ]
+         { featureType: "road", elementType: "geometry", stylers: [{ hue: "#8800ff" }, { lightness: 100}] }, {
+           featureType: "road", stylers: [{ visibility: "on" }, { hue: "#91ff00" }, { saturation: -62 }, { gamma: 1.98 }, { lightness: 45}]}, {
+           featureType: "water", stylers: [{ hue: "#005eff" }, { gamma: 0.72 }, { lightness: 42}]}, { 
+           featureType: "transit.line", stylers: [{ visibility: "on" }]}, {
+           featureType: "administrative.locality", stylers: [ { visibility: "on" }]}, {
+           featureType: "administrative.neighborhood", elementType: "geometry",stylers: [{ visibility: "simplified" }]}, {
+           featureType: "landscape",stylers: [{ visibility: "on" },{ gamma: 0.41 },{ lightness: 46 }]}, {
+           featureType: "administrative.neighborhood", elementType: "labels.text", stylers: [{ visibility: "on" }, { saturation: 33 }, { lightness: 20}]
          }
         ];
 
@@ -96,7 +49,8 @@ function initialize() {
     var myOptions = { zoom: 11, center: myLatlng, styles: mapStyles, mapTypeId: google.maps.MapTypeId.ROADMAP }
     gMap = new google.maps.Map(document.getElementById("map"), myOptions);
 
-    $.getJSON("mapdata.json", function (data) {
+    $.getJSON("http://bradoyler.github.com/mapdata.json?callback=?", function (data) {
+  //  $.getJSON("mapdata.json", function (data) {
         var locations = data;
 
         iw = new google.maps.InfoWindow();
@@ -117,15 +71,15 @@ function addMarker(location) {
         map: gMap
     });
 
-    var content = "<a href='http://www.weworkinphilly.com/companies/" + location.id + "'>" + location.name + "</a>" + "<div>" + location.location + "<br /> <a href=" + location.website + " target='_blank'>" + location.website + "</a> </div><div>Type: " + location.category + "</div>";
+    var content = "<a href='http://www.weworkinphilly.com/companies/" + location.user_id + "'>" + location.name + "</a>" + "<div>" + location.location + "<br /> <a href=" + location.website + " target='_blank'>" + location.website + "</a> </div><div>Type: " + location.category + "</div>";
     createMyInfoWindow(marker, content, gMap);
     markersArray.push(marker);
 }
 
-function clearOverlay(BSUName) {
+function clearOverlay(category) {
     if (markersArray) {
         for (i in markersArray) {
-            if (markersArray[i].title == BSUName) markersArray[i].setMap();
+            if (markersArray[i].title == category) markersArray[i].setMap();
         }
     }
 }
