@@ -1,9 +1,25 @@
 [
-{ "company":
-    { "user_id": 3, "name": "test 3", "Lat": 39.951904, "Long": -75.118597, "location": "Philadelphia, PA 19102", "website": "http://ourwebsite.com", "category": "startup" } 
+{ 
+  "company": {           
+     "user_id": 3, 
+     "name": "test 3", 
+     "Lat": 39.951904, 
+     "Long": -75.118597, 
+     "location": "Philadelphia, PA 19102", 
+     "website": "http://ourwebsite.com", 
+     "category": "startup" 
+   } 
 },
-{ "company":
-    { "user_id": 4, "name": "test 4", "Lat": 39.952914, "Long": -75.128597, "location": "Philadelphia", "website": "http://ourwebsite.com", "Zip": "19102", "category": "startup" } 
+{ 
+   "company": { 
+     "user_id": 4, 
+     "name": "test 4", 
+     "Lat": 39.952914, 
+     "Long": -75.128597, 
+     "location": "Philadelphia", 
+     "website": "http://ourwebsite.com",
+     "category": "startup" 
+   } 
 },
 { "company": { "user_id": 5, "name": "test 5", "Lat": 39.953924, "Long": -75.138597, "location": "Philadelphia", "website": "http://ourwebsite.com", "Zip": "19102", "category": "startup"} },
 { "company": { "user_id": 6, "name": "test 6", "Lat": 39.954934, "Long": -75.148597, "location": "Philadelphia", "website": "http://ourwebsite.com", "Zip": "19102", "category": "startup"} },
