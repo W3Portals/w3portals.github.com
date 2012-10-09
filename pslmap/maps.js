@@ -49,8 +49,8 @@ function initialize() {
     var myOptions = { zoom: 11, center: myLatlng, styles: mapStyles, mapTypeId: google.maps.MapTypeId.ROADMAP }
     gMap = new google.maps.Map(document.getElementById("map"), myOptions);
 
- //   $.getJSON("http://bradoyler.github.com/mapdata.json?callback=?", function (data) {
-    $.getJSON("mapdata.json", function (data) {
+       $.getJSON("http://shrouded-retreat-7570.herokuapp.com/mapfeed?callback=?", function (data) {
+  //  $.getJSON("mapdata.json", function (data) {
         var locations = data;
 
         iw = new google.maps.InfoWindow();
