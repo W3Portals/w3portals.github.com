@@ -56,7 +56,7 @@ function initialize() {
         iw = new google.maps.InfoWindow();
         for (var i = 0; i < locations.length; i++) {
             var location = locations[i].company;
-
+            location.category = "startup";
                 addMarker(location);          
         }
     });
