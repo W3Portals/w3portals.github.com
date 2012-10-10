@@ -7,8 +7,17 @@ var gSearchForm;
 var markersArray = [];
 
 $(document).ready(function () {
-
-   // initialize();
+     
+	  $( '#myModal').dialog({
+            height:580, 
+			width:617,
+            autoOpen: false
+        });
+	 
+	 $('#btn-map').click(function() { 
+	         $( "#myModal" ).dialog( "open" );
+	     	  initialize();
+	 });
 
     $('[type="checkbox"]').click(function () {
         if (this.checked == false) {
@@ -42,10 +51,7 @@ function initialize() {
 
     var myLatlng = new google.maps.LatLng(39.951904,-75.158597);
 
-    // Initialize the local searcher
-    gLocalSearch = new GlocalSearch();
-    gLocalSearch.setSearchCompleteCallback(null, OnLocalSearch);
-
+  
     var myOptions = { zoom: 11, center: myLatlng, styles: mapStyles, mapTypeId: google.maps.MapTypeId.ROADMAP }
     gMap = new google.maps.Map(document.getElementById("map"), myOptions);
 
@@ -60,6 +66,8 @@ function initialize() {
                 addMarker(location);          
         }
     });
+	
+	// resizeMap();
 }
 
 function addMarker(location) {
