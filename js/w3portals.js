@@ -1,5 +1,5 @@
 
-$(document).ready(function () {
+$(function () {
     SetHeader();
     SetContentHeight();
 
@@ -7,8 +7,6 @@ $(document).ready(function () {
     var hash = window.location.hash;
     var idtoclick = hash + "-link";
     $(idtoclick).click();
-    $("body").scrollTop(0);
-   
 });
 
 $(window).load(function () {
@@ -19,48 +17,35 @@ $(window).load(function () {
     });
 });
 
-var allNav = $("#nav ul li");
-var contentitems = $("#content-main > div");
-var contactusinfo = $("p#contactus-note");
-var ourworkinfo = $("#ourwork-note");
-
 var SetHeader = function () {
 
     $("#nav ul li").click(function () {
         HeaderSelect($(this));
     });
 
-    var ourworklink = $("#nav ul li#ourwork-link");
-    ourworklink.click(function () {
+    $("#nav ul li#ourwork-link").click(function () {
         $("div#ourwork-section").fadeIn();
-        ourworkinfo.fadeIn();
+        $("#ourwork-note").fadeIn();
     });
 
-    var contactuslink = $("#nav ul li#contactus-link");
-    contactuslink.click(function () {
+    $("#nav ul li#contactus-link").click(function () {
         $("div#contactus").fadeIn();
-        contactusinfo.fadeIn();
+        $("#contactus-note").fadeIn();
     });
 
-    $("a.contactus").click(function () {
-        contactuslink.click();
-    });
-
-    var Aboutinfolink = $("#nav ul li#About-info-link");
-    Aboutinfolink.click(function () {
-        $("div#About-info").fadeIn();
+    $("#nav ul li#About-info-link").click(function () {
+        $("#About-info").fadeIn();
     });
 
 };
 
 var HeaderSelect = function (clicked) {
-    allNav.removeClass("selected");
+    $("#nav ul li").removeClass("selected");
     clicked.addClass("selected");
-    contentitems.hide();
-    contactusinfo.hide();
-    ourworkinfo.hide();
-  //  $('div#sidecontent').animate({ width: '200px' });
-	 $('div#sidecontent').hide();
+    $("#content-main > div").hide();
+    $("p#contactus-note").hide();
+    $("#ourwork-note").hide();
+    $('div#sidecontent').hide();
 };
 
 var bgimg;
@@ -100,6 +85,4 @@ var SetContentHeight = function () {
 	  else {
 	    $("#imglogo").css('height', '');
 	  }
-  //  $("#About-info .form-content").css('max-height', targetHeight);
-  //  $("#ourwork-section .form-content").css('max-height', targetHeight);
 };
