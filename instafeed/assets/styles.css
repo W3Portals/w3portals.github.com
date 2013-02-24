@@ -5,3 +5,37 @@ img{
 body{
 	background-color: #D95C2B;
 }
+
+.image { 
+   position: relative; 
+   /* width: 100%;  for IE 6 */
+   float: left;
+}
+
+h2 { 
+   position: absolute; 
+   top: 245px; 
+   left: 0; 
+   width: 100%; 
+   max-height: 34px;
+}
+
+h2 span { 
+   color: white; 
+   font: bold 12px Helvetica, Sans-Serif; 
+   letter-spacing: -1px;  
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 10px; 
+}
+
+.image:hover > h2 {
+   
+    opacity: 1.0;
+}
+
+.image > h2 {
+    
+    opacity: 0;
+    overflow: auto;
+}
