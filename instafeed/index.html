@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset=utf-8>
+        <meta name=description content="">
+        <meta name=viewport content="width=device-width, initial-scale=1">
+        <title>Today Show Photo Feed</title>
+       <link rel=stylesheet href="assets/styles.css">
+       <link rel=author href="humans.txt">
+
+    </head>
+    <body>
+
+       <div id="instafeed"></div>
+
+<script type="text/javascript" src="assets/instafeed.min.js"></script>
+ <script type="text/javascript">
+    var userFeed = new Instafeed({
+        get: 'user',
+        userId: 5814140,
+        accessToken: '3394659.344e983.b90419945a3f4d4c88879d7b874c581b',
+        resolution:'low_resolution',
+        limit:50, links: false,
+         template: '<a href="{{link}}"><img title="{{caption}}" src="{{image}}" /></a>'
+    });
+    userFeed.run();
+
+ </script>
+
+    </body>
+</html>
