@@ -1,7 +1,7 @@
 
 
 var ctx = Sketch.create({
-	container: document.getElementById('center'),  
+	container: document.body, //getElementById('center'),  
     });
 
 ctx.setup = function()
