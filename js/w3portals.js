@@ -1,5 +1,6 @@
 
 $(function () {
+    SetHeader();
     var hash = window.location.hash;
     var idtoclick = hash + "-link";
     $(idtoclick).click();
@@ -17,12 +18,21 @@ var SetHeader = function () {
     });
 
     $("#nav ul li#contactus-link").click(function () {
-        $("div#contactus").fadeIn();
+        $("div#contactus-section").fadeIn();
         $("#contactus-note").fadeIn();
     });
 
     $("#nav ul li#About-info-link").click(function () {
-        $("#About-info").fadeIn();
+        $("#About-section").fadeIn();
     });
 
+};
+
+var HeaderSelect = function (clicked) {
+    $("#nav ul li").removeClass("selected");
+    clicked.addClass("selected");
+    $("#content-main > div").hide();
+    $("p#contactus-note").hide();
+    $("#ourwork-note").hide();
+    $('div#sidecontent').hide();
 };
