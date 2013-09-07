@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="Content-Language" content="en-us" />
     <meta name="description" content="W3Portals - Plan > Build > Deliver" />
@@ -12,6 +12,7 @@
     <link href="Site.css" rel="stylesheet" type="text/css" />
     <link rel='icon' type='image/png' href='img/favicon.ico' />
     <link href="img/W3icon.png" rel="image_src">
+
 	   <script type="text/javascript">
        var _gaq = _gaq || [];
        _gaq.push(['_setAccount', 'UA-372716-1']);
@@ -23,106 +24,42 @@
        })();
 
    </script>
+   
 </head>
 <body>
-
-   <div id="header">
+<script type="text/x-handlebars">
+    <div id="header">
        <a id="logo" href="">
         <img id="imglogo" src="img/W3LOGO.png" height="60px" alt="W3Portals" /></a>
     <div id="nav">
         <ul>
-            <li id="ourwork-link"><a class="btn" href="#ourwork">WORK</a></li>
-            <li id="About-info-link"><a class="btn" href="#About-info">ABOUT</a></li>
-            <li id="contactus-link"><a class="btn" href="#contactus">CONTACT</a></li>
+            <li id="ourwork-link">
+               {{#link-to 'ourwork' class="btn"}} WORK {{/link-to}}
+            </li>
+            <li id="About-info-link">
+               {{#link-to 'about' class="btn"}} ABOUT {{/link-to}}
+            </li>
+            <li id="contactus-link">
+              {{#link-to 'contact' class="btn"}} CONTACT {{/link-to}}
+            </li>
         </ul>
     </div>
 
    </div>
        
     <div id="center">
-      
-            <div id="content-main">
-                <div id="contactus-section" class="form hide">
-                    <div class="form-header">
-                        <h1>Contact Us</h1>
-                    </div>
-                    <div class="form-content">
-                     <p>Please feel to contact us if you have any questions</p>  
-                      Sales Inquiries - <a href="mailto:sales@w3portals.com">sales@w3portals.com</a><br />
-                      Tech Support - <a href="mailto:support@w3portals.com">support@w3portals.com</a><br />
-                      <p>We are currently located in the Philadelphia area</p>
-                       W3Portals, LLC.<br />
-                       Ph: (866) 410-5333
-                    </div>
-                </div>
-                <div id="ourwork-section" class="form hide">
-                    <div class="form-header">
-                        <h1>Our Work</h1>
-                    </div>
-                    <div class="form-content overflow">
-                        <p align="center"><a href="http://www.pitchswap.co" target="_blank"><img height="60" border="0" src="img/pitchswap.png" alt=""></a><br>
-                         Where ideas come to get pitched!</p>
-						 <hr>
-					   <p align="center"><a href="http://www.fundingworks.org" target="_blank"><img height="60" border="0" src="img/FWlogo.png" alt=""></a><br>
-                          Helping Non-Profits utilize crowd-funding.</p>
-						 <hr>
-					    <p align="center"><a href="http://www.bridesview.com" target="_blank"><img height="80" border="0" src="img/bridesview.jpg" alt=""></a><br>
-                         Helping Brides TO-BE create their dream wedding.</p>
-						 <hr>
-					<!--	 <p align="center"><a href="http://babyomine.com" target="_blank"><img height="60" border="0" src="img/Babyomine.png" alt=""></a><br>
-                         Showcase your bundle of joy and share with friends.</p>
-						 <hr>-->
-                        <p align="center"><a href="http://mealtik.com" target="_blank"><img height="60" border="0" width="234" src="img/homepage_v3.png" alt=""></a><br>
-                        Your local homemade meal network.</p>
-                        <hr />
-                       <!-- <p align="center"><a href="http://w3gifts.com" target="_blank"><img height="80" border="0" src="img/w3gifts_logo2.jpg" alt=""></a><br>
-                        An online marketplace for online gift cards (e-Gifts). Provider of&nbsp; turn-key e-gifting solution&nbsp;for local retailers.</p>
-                        <hr />-->
-                        <p align="center"><a href="http://www.mycollegeplan.com" target="_blank"><img border="0" height="90" src="img/ecliptic(1).JPG" alt="image"></a><br>
-                        Ecliptic Financial. Financial services company for students seeking financial aid for higher education. This site includes many tools for students and a seminar booking system. <a href="http://mycollegeplan.com" target="_blank">MyCollegePlan.com</a></p>
-                        <hr />
-                        <p align="center"><a href="http://www.riverchasers.com/"><img border="0" height="99" src="img/riversite.jpg" alt=""></a> <br>
-                        A facilitator of no buy-in Poker Tournaments, in the Delaware Valley. This project included an online community features and a member point management system. <a href="http://www.riverchasers.com/">www.RiverChasers.com</a></p>
-                        <hr />
-                     <!--   <p align="center"><a href="http://TheCountryCottage.net " target="_blank"><img height="40" border="0" src="img/cclogo_red.gif" alt="" style="width: 322px; height: 77px"></a> <br>
-                        A fully featured e-commerce site that handles inventory management, shopping cart, payment gateway, etc.</p>
-                        <hr />-->
-                        <p align="center"><a href="http://www.aramarkwfm.com" target="_blank"><img height="45" border="0" src="img/aramark_logo.jpg" alt=""></a>&nbsp;<br>
-                        ARAMARK's WorkForce Management Portal.</p>
-                        <hr />                
-                   </div>
-                </div>
-       
-                <div id="About-section" class="form hide">
-                    <div id="about">
-                        <div class="form-header">
-                            <h1>About Us</h1>
-                        </div>
-                        <div class="form-content overflow">
-                             <h2> We strive to...</h2>
-                            <blockquote>
-                               <p>
-                                 <ul id="aboutlist">
-                           
-				 <li>Practice Agile methodologies and Behavior driven development.</li>
-				 <li>Focus on customer development (Lean Startups)</li>
-                                 <li>Help startups & entrepreneurs build innovative products. (checkout: StartupDigest & StartupWeekend)</li>
-                                 <li>Realize your apps should be device-agnostic and strive to develop cross-platform & responsive web apps.</li>
-                                 <li>Focus on open-source: C#, Ruby, jQuery, Cordova, SpecFlow, Cucumber, Knockout.js, RavenDB, ASP.Net MVC (yes, it's open) </li>
-                                 <li>Utilize the cloud: AppHarbor, Azure, Heroku, Amazon Web Services, RavenHQ, CloudMine</li>
-                                 </ul>
-                              </p>
-                            </blockquote>
-                        </div>
-                    </div>
+      <div id="content-main">
+        {{outlet}}
+     </div>
+    </div>
+  </script>
 
-                </div>
-            </div>
-	   <div id="content">
+  <script type="text/x-handlebars" data-template-name="index">
+        <div id="content">
             <div id="sidecontent">
             <p style=" font-weight:bold;">We build solutions<span class="italic normal"> by creating </span>Minimal Marketable Features</p>
              <p> Our approach is to first recognize the most valuable business problems, and using an <b>iterative</b> process, deliver features to the customer, 
-			 as frequent as possible, in order to quickly learn about the problem we are trying to solve.
+       as frequent as possible, in order to quickly learn about the problem we are trying to solve.
               </p>
                <p style="color: #808080;">Located in the Greater Philadelphia area.<br />
                  Reach us by phone: 866-410-5333<br />
@@ -136,25 +73,69 @@
                     <strong>This is some of our work </strong>
                   </span>
             </div>
-			
-        </div>
-    </div>
-  <div style="background: url('img/maps.png') no-repeat scroll 0px 50% #808080; border-width: 1px 1px medium; border-style: solid solid none; border-color: rgb(255, 255, 255) rgb(255, 255, 255) -moz-use-text-color; -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; -moz-border-image: none; border-radius: 4px 4px 0px 0px; box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.25) inset, 0px 1px 2px rgba(0, 0, 0, 0.5); font: bold 12px/1em Arial,sans-serif; position: fixed; right: 10px; bottom: 0px; z-index: 9999; margin-bottom: 0px; display: block;" id="uvTab">
-    <a id="btn-map" href="#myModal"  style="background-color: transparent; display:block;padding:20px 42px 20px 42px; text-decoration:none; color:#000;"  role="button" data-toggle="modal"> &nbsp; </a>    
-   </div>
+     </div>
+  </script>
+  <script type="text/x-handlebars" data-template-name="ourwork">
    
-   <div id="myModal">
-        <div id="map" style="width:580px; height:500px; border: 1px solid #979797;">  </div>
-    </div>
+    <div class="form-content overflow">
+      {{#each item in model}}
+        <p align="center">
+        <a href="{{unbound item.www}}" target="_blank">
+          <img height="60" border="0" src="{{unbound item.image}}" alt="">
+        </a>
+           <br> 
+            {{unbound item.desc}}
+        </p>
+        <hr>
+        {{/each}}                    
+     </div>
+  </script>
+  <script type="text/x-handlebars" data-template-name="about">
+           <div id="About-section" class="form">
+                    <div id="about">
+                        <div class="form-header">
+                            <h1>About Us</h1>
+                        </div>
+                        <div class="form-content overflow">
+                             <h2> We strive to...</h2>
+                            <blockquote>
+                               <p>
+                                 <ul id="aboutlist">
+                                 <li>Practice Agile methodologies and Behavior driven development.</li>
+                                 <li>Focus on customer development (Lean Startups)</li>
+                                 <li>Help startups & entrepreneurs build innovative products. (checkout: StartupDigest & StartupWeekend)</li>
+                                 <li>Realize your apps should be device-agnostic and strive to develop cross-platform & responsive web apps.</li>
+                                 <li>Focus on open-source: Javascript, Nodejs, Express, Ember.js, jQuery, Cordova, MongoDb, C#, RavenDB & ASP.Net MVC (yes, it is open) </li>
+                                 <li>Utilize the cloud: AppHarbor, Azure, Heroku, Amazon Web Services, RavenHQ, CloudMine</li>
+                                 </ul>
+                              </p>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+  </script>
+
+
+   <script type="text/x-handlebars" data-template-name="contact">
+    <div id="contactus-section" class="form">
+                    <div class="form-header">
+                        <h1>Contact Us</h1>
+                    </div>
+                    <div class="form-content">
+                     <p>Please feel to contact us if you have any questions</p>  
+                      Sales Inquiries - <a href="mailto:sales@w3portals.com">sales@w3portals.com</a><br />
+                      Tech Support - <a href="mailto:support@w3portals.com">support@w3portals.com</a><br />
+                      <p>We are currently located in the Greater New York area</p>
+                       W3Portals, LLC.<br />
+                       Ph: (866) 410-5333
+            </div>
+      </div>
+  </script>
   
-  <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-  <script type="text/javascript" src="js/w3portals.js"></script>
-  <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBJxinfMqFhdPjHPR5dSefcitYycTN526g&sensor=true&region=US"></script>
-  <script src="js/maps.js" type="text/javascript"></script>
-	 <script type="text/javascript" src="https://raw.github.com/soulwire/sketch.js/master/js/sketch.min.js"></script>
-   <script type="text/javascript" src="js/bgdraw.js"></script>
-   
+  <script src="js/libs/jquery-1.9.1.js"></script>
+  <script src="js/libs/handlebars-1.0.0.js"></script>
+  <script src="js/libs/ember-1.0.0.js"></script>
+  <script src="js/app.js"></script>
 
 </body>
 </html>
