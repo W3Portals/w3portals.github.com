@@ -7,6 +7,14 @@ App.Router.map(function() {
   this.route("contact", { path: "/contact" });
 });
 
+App.RebelMouseView = Em.View.extend({
+    didInsertElement: function() {
+         var widgetEmbedCode = '<script type="text/javascript" class="rebelmouse-embed-script" src="https://www.rebelmouse.com/static/js-build/embed/embed.js?site=W3portals&height=900&flexible=1"></script>';
+         this.$().append(widgetEmbedCode);
+      // this.$('.rebelmouse-embed-script').hide();
+    }
+});
+
 App.OurworkRoute = Ember.Route.extend({
   model: function() {
     return [
