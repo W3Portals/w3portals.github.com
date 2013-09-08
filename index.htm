@@ -29,19 +29,15 @@
 <body>
 <script type="text/x-handlebars">
     <div id="header">
-       <a id="logo" href="">
+       <a id="logo" href="#/">
         <img id="imglogo" src="img/W3LOGO.png" height="60px" alt="W3Portals" /></a>
-    <div id="nav">
-        <ul>
-            <li id="ourwork-link">
-               {{#link-to 'ourwork' class="btn"}} WORK {{/link-to}}
-            </li>
-            <li id="About-info-link">
-               {{#link-to 'about' class="btn"}} ABOUT {{/link-to}}
-            </li>
-            <li id="contactus-link">
-              {{#link-to 'contact' class="btn"}} CONTACT {{/link-to}}
-            </li>
+    <div style="max-width:400px; margin:auto;">
+        <ul class="fancyNav">
+            
+            {{#linkTo "index" tagName="li" href=false}}<a {{bindAttr href="view.href"}}><img src="img/home-icon.png" height="16" alt="home"></a>{{/linkTo}}
+            {{#linkTo "ourwork" tagName="li" href=false}}<a {{bindAttr href="view.href"}}>WORK</a>{{/linkTo}}
+            {{#linkTo "about" tagName="li" href=false}}<a {{bindAttr href="view.href"}}>ABOUT</a>{{/linkTo}}
+            {{#linkTo "contact" tagName="li" href=false}}<a {{bindAttr href="view.href"}}>CONTACT</a>{{/linkTo}}
         </ul>
     </div>
 
@@ -76,7 +72,10 @@
      </div>
   </script>
   <script type="text/x-handlebars" data-template-name="ourwork">
-   
+    <div id="ourwork-section" class="form">
+                    <div class="form-header">
+                        <h1>Client Work</h1>
+                    </div>
     <div class="form-content overflow">
       {{#each item in model}}
         <p align="center">
@@ -89,6 +88,7 @@
         <hr>
         {{/each}}                    
      </div>
+    </div>
   </script>
   <script type="text/x-handlebars" data-template-name="about">
            <div id="About-section" class="form">
@@ -97,16 +97,13 @@
                             <h1>About</h1>
                         </div>
                         <div class="form-content overflow">
-                             <h2> Striving to...</h2>
+                             <h2> Core values:</h2>
                             <blockquote>
                                <p>
                                  <ul id="aboutlist">
-                                 <li>Practice Agile methodologies and Behavior driven development.</li>
-                                 <li>Focus on customer development (Lean Startups)</li>
-                                 <li>Help startups & entrepreneurs build innovative products. (checkout: StartupDigest & StartupWeekend)</li>
-                                 <li>Realize your apps should be device-agnostic and strive to develop cross-platform & responsive web apps.</li>
-                                 <li>Focus on open-source: Javascript, Nodejs, Express, Ember.js, jQuery, Cordova, MongoDb, C#, RavenDB & ASP.Net MVC (yes, it is open) </li>
-                                 <li>Utilize the cloud: AppHarbor, Azure, Heroku, Amazon Web Services, RavenHQ, CloudMine</li>
+                                 {{#each item in model}}
+                                    <li><h4> {{item}} </h4></li>
+                                 {{/each}}
                                  </ul>
                               </p>
                             </blockquote>
@@ -116,24 +113,21 @@
                 </div>
   </script>
 
-
    <script type="text/x-handlebars" data-template-name="contact">
     <div id="contactus-section" class="form">
                     <div class="form-header">
                         <h1>Contact</h1>
                     </div>
                     <div class="form-content">
-                     <p>Please feel to contact us if you have any questions</p>  
-                      Sales Inquiries - <a href="mailto:sales@w3portals.com">sales@w3portals.com</a><br />
-                      Tech Support - <a href="mailto:support@w3portals.com">support@w3portals.com</a><br />
-                      <p>Currently located in the Greater New York area</p>
-                       W3Portals, LLC.<br />
-                       Ph: (866) 410-5333
+                     <h2>How to get in touch:</h2>
+                      <h3><a href="mailto:info@w3portals.com">info@w3portals.com</a></h3>
+                      <h3>(866) 410-5333</h3>
+                      <p>Currently located in the Greater New York City area</p>
+                       
             </div>
       </div>
   </script>
 
-  
   <script src="js/libs/jquery-1.9.1.js"></script>
   <script src="js/libs/handlebars-1.0.0.js"></script>
   <script src="js/libs/ember-1.0.0.js"></script>

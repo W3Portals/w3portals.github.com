@@ -1,18 +1,9 @@
 App = Ember.Application.create();
 
 App.Router.map(function() {
-  // put your routes here
   this.route("ourwork", { path: "/ourwork" });
   this.route("about", { path: "/about" });
   this.route("contact", { path: "/contact" });
-});
-
-App.RebelMouseView = Em.View.extend({
-    didInsertElement: function() {
-         var widgetEmbedCode = '<script type="text/javascript" class="rebelmouse-embed-script" src="https://www.rebelmouse.com/static/js-build/embed/embed.js?site=W3portals&height=900&flexible=1"></script>';
-         this.$().append(widgetEmbedCode);
-      // this.$('.rebelmouse-embed-script').hide();
-    }
 });
 
 App.OurworkRoute = Ember.Route.extend({
@@ -25,8 +16,54 @@ App.OurworkRoute = Ember.Route.extend({
     {www:'http://www.mycollegeplan.com', name:'MyCollegePlan',image:'img/ecliptic(1).JPG', desc:' Financial services company for students seeking financial aid for higher education.'},
     {www:'http://www.riverchasers.com/', name:'riverchasers',image:'img/riversite.jpg', desc:' A facilitator of no buy-in Poker Tournaments, in the Delaware Valley. '},
     {www:'http://www.aramarkwfm.com', name:'ARAMARK',image:'img/aramark_logo.jpg', desc:'ARAMARKs WorkForce Management Portal.'}
-
             ];
   }
+});
+
+App.AboutRoute = Ember.Route.extend({
+  model: function() {
+    return ['Practice Agile methodologies and Behavior driven development.',
+            'Focus on customer development (Lean Startups)',
+            'Help startups & entrepreneurs build innovative products. (checkout: StartupDigest & StartupWeekend)',
+            'Realize your apps should be device-agnostic and strive to develop cross-platform & responsive web apps.',
+            'Focus on open-source: Javascript, Nodejs, Express, Ember.js, jQuery, Cordova, MongoDb, C#, RavenDB & ASP.Net MVC (yes, it is open) ',
+            'Utilize the cloud: AppHarbor, Azure, Heroku, Amazon Web Services, RavenHQ, CloudMine'    
+            ];
+  }
+});
+
+App.IndexView = Em.View.extend({
+    didInsertElement: function() {
+       this.$('#sidecontent').hide().fadeIn(500);
+    }
+});
+
+App.OurworkView = Em.View.extend({
+    didInsertElement: function() {
+       this.$('h1').hide().fadeIn(400);
+       this.$('.form-content').hide().slideDown(300);
+    }
+});
+
+App.AboutView = Em.View.extend({
+    didInsertElement: function() {
+       this.$('h1').hide().fadeIn(400);
+       this.$('.form-content').hide().slideDown(300);
+    }
+});
+
+App.ContactView = Em.View.extend({
+    didInsertElement: function() {
+       this.$('h1').hide().fadeIn(400);
+       this.$('.form-content').hide().slideDown(300);
+    }
+});
+
+App.RebelMouseView = Em.View.extend({
+    didInsertElement: function() {
+          this.$().hide().fadeIn(800);
+         var widgetEmbedCode = '<div class="form-header"><h1>Social feed</h1></div><script type="text/javascript" class="rebelmouse-embed-script" src="https://www.rebelmouse.com/static/js-build/embed/embed.js?site=W3portals&height=900&flexible=1"></script>';
+       //  this.$().append(widgetEmbedCode);
+    }
 });
 
