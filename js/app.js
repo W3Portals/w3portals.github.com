@@ -4,6 +4,9 @@ App.Router.map(function() {
   this.route("ourwork", { path: "/ourwork" });
   this.route("about", { path: "/about" });
   this.route("contact", { path: "/contact" });
+
+  __device__ = navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry)/);
+      
 });
 
 App.OurworkRoute = Ember.Route.extend({
@@ -34,36 +37,47 @@ App.AboutRoute = Ember.Route.extend({
 
 App.IndexView = Em.View.extend({
     didInsertElement: function() {
-       this.$('#sidecontent').hide().fadeIn(500);
+        if(!__device__){
+        this.$('#sidecontent').hide().fadeIn(500);
+       }
+       
     }
 });
 
 App.OurworkView = Em.View.extend({
     didInsertElement: function() {
+      if(!__device__){
        this.$('h1').hide().fadeIn(400);
        this.$('.form-content').hide().slideDown(300);
+     }
     }
 });
 
 App.AboutView = Em.View.extend({
     didInsertElement: function() {
+     if(!__device__){
        this.$('h1').hide().fadeIn(400);
        this.$('.form-content').hide().slideDown(300);
+     }
     }
 });
 
 App.ContactView = Em.View.extend({
     didInsertElement: function() {
+     if(!__device__){
        this.$('h1').hide().fadeIn(400);
        this.$('.form-content').hide().slideDown(300);
+     }
     }
 });
 
 App.RebelMouseView = Em.View.extend({
     didInsertElement: function() {
+       if(!__device__){
           this.$().hide().fadeIn(800);
-         var widgetEmbedCode = '<div class="form-header"><h1>Social feed</h1></div><script type="text/javascript" class="rebelmouse-embed-script" src="https://www.rebelmouse.com/static/js-build/embed/embed.js?site=W3portals&height=900&flexible=1"></script>';
-       //  this.$().append(widgetEmbedCode);
+          var widgetEmbedCode = '<div class="form-header"><h1>Social feed</h1></div><script type="text/javascript" class="rebelmouse-embed-script" src="https://www.rebelmouse.com/static/js-build/embed/embed.js?site=W3portals&height=900&flexible=1"></script>';
+         this.$().append(widgetEmbedCode);
+      }
     }
 });
 
