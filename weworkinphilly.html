@@ -50,9 +50,8 @@
      	 
      	   $("<img/>").attr("src", "http://s3.amazonaws.com/weworkinphilly/photos/"+ this.person.id +"/medium/"+ this.person.photo_file_name)
      	   .attr("title", this.person.name).attr("id","img"+this.person.user_id).appendTo("#images")
-           .wrap('<a href="http://weworkinphilly.com/people/'+this.person.user_id+'" target="_blank" />');
+           .wrap('<a href="http://weworkinphilly.com/people/'+this.person.slug+'" target="_blank" />');
           });
-        //  $('#images').cycle({fx:'fade', speed:'fast', timeout: 0, next:'#next', prev:'#prev'});
      }).complete(function() { $('#loading').hide(); });;
     }
 </script>
