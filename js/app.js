@@ -64,6 +64,7 @@ App.AboutView = Em.View.extend({
 
 App.ContactView = Em.View.extend({
     didInsertElement: function() {
+     twttr.init();
      if(!__device__){
        this.$('h1').hide().fadeIn(400);
        this.$('.form-content').hide().slideDown(300);
