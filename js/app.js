@@ -25,12 +25,13 @@ App.OurworkRoute = Ember.Route.extend({
 
 App.AboutRoute = Ember.Route.extend({
   model: function() {
-    return ['Practice Agile methodologies and Behavior driven development.',
-            'Focus on customer development (Lean Startups)',
-            'Help startups & entrepreneurs build innovative products. (checkout: StartupDigest & StartupWeekend)',
-            'Realize your apps should be device-agnostic and strive to develop cross-platform & responsive web apps.',
-            'Focus on open-source: Javascript, Nodejs, Express, Ember.js, jQuery, Cordova, MongoDb, C#, RavenDB & ASP.Net MVC (yes, it is open) ',
-            'Utilize the cloud: AppHarbor, Azure, Heroku, Amazon Web Services, RavenHQ, CloudMine'    
+    return ['First and foremost, build great products',
+            'Practice Agile and behavior-driven development.',
+            'Measurement and iterative process, is the only way to improve',
+            'Help customers discover how to innovative their products/services',
+            'Realize your apps should be device-agnostic, cross-platform & responsive',
+            'Focus on open-source: Javascript, Nodejs, Express, React, GraphQL',
+            'Utilize the cloud: Azure, Heroku, Amazon Web Services, Firebase'    
             ];
   }
 });
@@ -71,14 +72,3 @@ App.ContactView = Em.View.extend({
      }
     }
 });
-
-App.RebelMouseView = Em.View.extend({
-    didInsertElement: function() {
-       if(!__device__){
-          this.$().hide().fadeIn(800);
-          var widgetEmbedCode = '<div class="form-header"><h1>Social feed</h1></div><script type="text/javascript" class="rebelmouse-embed-script" src="https://www.rebelmouse.com/static/js-build/embed/embed.js?site=W3portals&height=900&flexible=1"></script>';
-         this.$().append(widgetEmbedCode);
-      }
-    }
-});
-
